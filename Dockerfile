@@ -24,7 +24,7 @@ ENV OPENSSL_LIB_DIR=/usr/local/ssl/lib \
     OPENSSL_STATIC=1
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-RUN . $HOME/.cargo/env
+ENV PATH=$HOME/.cargo/bin:$PATH
 RUN rustup install nightly
 RUN rustup override set nightly
 RUN rustup target add asmjs-unknown-emscripten --toolchain nightly
