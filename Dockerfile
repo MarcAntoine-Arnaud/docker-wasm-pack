@@ -23,12 +23,12 @@ ENV OPENSSL_LIB_DIR=/usr/local/ssl/lib \
     OPENSSL_INCLUDE_DIR=/usr/local/ssl/include \
     OPENSSL_STATIC=1
 
-RUN curl https://sh.rustup.rs -sSf | sh && \
-    source $HOME/.cargo/env && \
-    rustup install nightly -y && \
-    rustup override set nightly -y && \
-    rustup target add asmjs-unknown-emscripten --toolchain nightly -y && \
-    rustup target add wasm32-unknown-emscripten --toolchain nightly -y && \
-    cargo install wasm-pack
+RUN curl https://sh.rustup.rs -sSf | sh
+RUN source $HOME/.cargo/env
+RUN rustup install nightly
+RUN rustup override set nightly
+RUN rustup target add asmjs-unknown-emscripten --toolchain nightly
+RUN rustup target add wasm32-unknown-emscripten --toolchain nightly
+RUN cargo install wasm-pack
 
 CMD wasm-pack init
