@@ -23,7 +23,7 @@ ENV OPENSSL_LIB_DIR=/usr/local/ssl/lib \
     OPENSSL_INCLUDE_DIR=/usr/local/ssl/include \
     OPENSSL_STATIC=1
 
-RUN curl https://sh.rustup.rs -sSf | sh
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 RUN source $HOME/.cargo/env
 RUN rustup install nightly
 RUN rustup override set nightly
